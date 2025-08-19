@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../preface/">
-      
-      
-        <link rel="next" href="../features/">
       
       
       <link rel="icon" href="../img/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>About the Author - maximex User Manual</title>
+        <title>Internal compare with other tools - maximex User Manual</title>
       
     
     
@@ -102,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About the Author
+              Internal compare with other tools
             
           </span>
         </div>
@@ -216,20 +212,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -245,7 +239,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             About
@@ -279,17 +273,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
         
   
   
@@ -300,7 +287,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1217,15 +1203,200 @@
 
 
 
-  <h1>About the Author</h1>
+  <h1>Internal compare with other tools</h1>
 
-<p>Wolfgang Fiedler is a Software Engineer, IBM Maximo Deployment Professional and
-   Oracle Certified Java Programmer. He is self employed and works for EAM Software
-   GmbH in Germany and for EAM Swiss GmbH in Switzerland. He is responsible for
-   designing, implementing and testing custom solutions and extensions in IBM Maximo
-   and SCCD. He is also the main developer for maximex.</p>
-<p>Comments are welcome! This manual should be as helpful as possible. Please send
-   comments about this publication to <a href="mailto:sales@rodias.de">sales@rodias.de</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="https://www.spie-rodias.de/produkte/maximex-data-management-tool/" target="_blank">Maximex - Data management tool</a></th>
+<th><a href="https://www.ibm.com/docs/en/maximo-eam-saas?topic=applications-configuring-data-export-import" target="_blank">IBM Maximo - Export/Import application data option (Native)</a></th>
+<th><a href="https://bportaluri.com/mxloader" target="_blank">MxLoader</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objects+Attributes based imports/exports</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Object structure's know-how required</td>
+<td></td>
+<td>✓ (Admins must define)</td>
+<td></td>
+</tr>
+<tr>
+<td>License required</td>
+<td>✓ (official support)</td>
+<td>Included with Maximo</td>
+<td>(community support)</td>
+</tr>
+<tr>
+<td>Installation required</td>
+<td>✓</td>
+<td>No (built-in)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Maximo Integration</td>
+<td>Licensed Maximo Add-On</td>
+<td>Out-of-box</td>
+<td>REST API / MIF</td>
+</tr>
+<tr>
+<td>File format</td>
+<td>XLS, XLSX</td>
+<td>CSV</td>
+<td>XLS</td>
+</tr>
+<tr>
+<td>Microsoft Excel Add-In (Macros) required (often restricted to activate)</td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Data import</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Data export</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Update key fields</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Detailed import history</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Status change</td>
+<td>✓</td>
+<td>✓ (Depends on object structure)</td>
+<td>✓ (Depends on object structure)</td>
+</tr>
+<tr>
+<td>Multilanguage import</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Add, Update or Delete operations mixed in one import file</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Easy specification attributes import and export</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADD Only or UPDATE only</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Pre-Import Check Script</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Easy execute Automation Scripts during the import</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Templates creation possible for non technical users</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Batch Export (background job)</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Power Search for data export</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Data import with the command line</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Attachments import</td>
+<td>comming...</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Default values for attributes</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Debugging</td>
+<td>✓</td>
+<td></td>
+<td>Basic (MIF logs)</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>✓</td>
+<td>Basic (System logs)</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Large data handling (performance, &gt;100k rows)</td>
+<td>✓ (optimized batch)</td>
+<td>Limited</td>
+<td>Risky / Excel limits</td>
+</tr>
+<tr>
+<td>Security / Access rights checks</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Ease of use for business users</td>
+<td>✓</td>
+<td>Low</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Scheduling of imports/exports</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 
