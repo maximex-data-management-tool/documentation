@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Enable%20the%20maximex%20in%20your%20applications/">
+        <link rel="prev" href="../../changes/">
       
       
-        <link rel="next" href="../Uninstalling%20the%20maximex/">
+        <link rel="next" href="../Preliminaries/">
       
       
       <link rel="icon" href="../../img/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Finish the installation - maximex User Manual</title>
+        <title>Maximo Application Suite (8 and Newer) - maximex User Manual</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Finish the installation
+              Maximo Application Suite (8 and Newer)
             
           </span>
         </div>
@@ -416,10 +416,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../mas/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -430,6 +437,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -439,20 +447,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -468,7 +474,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             7.6.x
@@ -594,17 +600,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Finish%20the%20installation/" class="md-nav__link">
         
   
   
@@ -615,7 +614,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1288,37 +1286,17 @@
 
 
 
-  <h1>Finish the installation</h1>
+  <h1>Maximo Application Suite (8 and Newer)</h1>
 
-<p>This chapter finishes describes the final steps to finish the installation of the maximex tool.</p>
 <ul>
-<li>Repeat the previous chapter’s steps for all Maximo applications where you want to use the maximex.</li>
-<li>
-<p>Install the License Keys for maximex:</p>
-<ul>
-<li>Save the provided ModuleKey in <strong>System Properties</strong> with the property name <code>EAM.DataManagementTool.ModuleKey</code>.</li>
-<li>Save the provided AppKey in <strong>System Property</strong> with the property name <code>EAM.DataManagementTool.AppKey</code></li>
+<li>Maximex is delivered as a ZIP archive. The filename will resemble: <code>maximex_MAS-6.2.0.0.zip</code>.</li>
+<li>The ZIP archive is created according to IBM guidelines:<br />
+<a href="https://www.ibm.com/docs/en/masv-and-l/maximo-manage/cd?topic=developing-customization-archive-guidelines">Customization archive guidelines</a></li>
+<li>If you have a download link for Maximex, download the file and make it accessible from your Maximo Application Suite through one of the following protocols: HTTP, HTTPS, FTP, or FTPS.<br />
+<strong>Do not</strong> configure a Maximex download link directly in your Maximo Application Suite. We cannot guarantee that such a link will remain available in the future (e.g., the HTTP server may be down, access rights may change, or the URL may change). Always use your own HTTP server.</li>
+<li>To install Maximex in Maximo Application Suite, follow the IBM instructions:<br />
+<a href="https://www.ibm.com/docs/en/masv-and-l/maximo-manage/cd?topic=customizing-adding-customizations">Adding customizations</a></li>
 </ul>
-</li>
-<li>
-<p>In Maximo go to the <strong>System Properties</strong> application and search for <code>EAM</code>. All the System Properties for the maximex are created with useful default values. Update any values if required.</p>
-</li>
-<li>Read the <strong>user manual</strong>. It contains valuable information and helps you get startet.</li>
-</ul>
-<p>After installation, you can verify maximex installation via the <strong>System Information</strong> dialog:</p>
-<p><img alt="" src="../img/maximex-system-info.png" /></p>
-<p>If maximex is enabled in your application and you have the necessary permissions, you will see:</p>
-<ul>
-<li>
-<p>A search bar menu entry.</p>
-<p><img alt="" src="../img/maximex-menu-table.png" /> </p>
-</li>
-<li>
-<p>Additional entries in the Select Action menu.</p>
-<p><img alt="" src="../img/maximex-actionmenu.png" /></p>
-</li>
-</ul>
-<p>Once these steps are completed, maximex is fully installed in IBM Maximo.</p>
 
 
 
