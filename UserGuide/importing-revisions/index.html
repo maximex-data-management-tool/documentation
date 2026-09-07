@@ -1,0 +1,1945 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Periodic%20Export%20of%20Data%20with%20a%20Crontask/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Creating revision-controlled objects during import - maximex User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-revision-controlled-objects-during-import" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="maximex User Manual" class="md-header__button md-logo" aria-label="maximex User Manual" data-md-component="logo">
+      
+  <img src="../../img/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            maximex User Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Creating revision-controlled objects during import
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="maximex User Manual" class="md-nav__button md-logo" aria-label="maximex User Manual" data-md-component="logo">
+      
+  <img src="../../img/favicon.png" alt="logo">
+
+    </a>
+    maximex User Manual
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    maximex User Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About the Authors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changes in recent versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Installation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/mas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maximo Application Suite (8 and Newer)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6.x
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7.6.x
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Preliminaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preliminaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Install%20required%20files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install required files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Remove%20old%20Apache%20POI%20versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remove old Apache POI versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Execute%20the%20TPAE%20Configuration%20Program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Execute the TPAE Configuration Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Enable%20the%20maximex%20in%20your%20applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enable the maximex in your applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Finish%20the%20installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finish the installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Uninstalling%20the%20maximex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uninstalling the maximex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/Change%20history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simple_import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification_import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specification Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extended_import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extended Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delete_records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete records with Excel Import files - $Delete
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multilanguage_import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multilanguage Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADD_only_and_UPDATE_only_Flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADD Only and UPDATE only Flags ($ADDONLY, $UPDATEONLY)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ignore%20empty%20cells%20in%20the%20import%20file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ignore empty cells in the import file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pre-Import%20Check%20Script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Import Check Script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Execute%20Automation%20Scripts%20during%20the%20import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Execute Automation Scripts during the import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Data%20Management%20Tool%20-%20Download%20Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Data Management Tool - Download Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Batch%20Export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Memory%20and%20Performance%20Issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory and Performance Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configuration%20Options%20for%20maximex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Options for maximex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20Validation%20and%20the%20DataDictionary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Validation and the DataDictionary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Show%20Import%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Show Import History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Fieldupdater/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Fieldupdater
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Power%20Search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Power Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Mass%20Delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Mass Delete
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EAM%20Keyupdate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAM Keyupdate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20import%20with%20the%20commandline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data import with the commandline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Import%20Excel%20files%20with%20a%20Crontask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import Excel files with a Crontask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Periodic%20Export%20of%20Data%20with%20a%20Crontask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Periodic Export of Data with a Crontask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating revision-controlled objects during import
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating revision-controlled objects during import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#behavior-of-scriptcreatembo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior of $SCRIPT.CREATE.MBO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-example-importing-a-job-plan-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example: importing a Job Plan revision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-automation-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Automation Script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-revision-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional revision description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-scriptcreatemboforce-is-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When $SCRIPT.CREATE.MBO.FORCE is needed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-revisions-and-ordinary-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial revisions and ordinary objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#behavior-of-scriptcreatembo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior of $SCRIPT.CREATE.MBO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-example-importing-a-job-plan-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example: importing a Job Plan revision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-automation-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Automation Script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-revision-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional revision description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-scriptcreatemboforce-is-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When $SCRIPT.CREATE.MBO.FORCE is needed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-revisions-and-ordinary-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial revisions and ordinary objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="creating-revision-controlled-objects-during-import">Creating revision-controlled objects during import</h1>
+<p>Revision-controlled Maximo objects must be created through their business logic. A new Job Plan revision, for example, is not an independent <code>JOBPLAN</code> record: Maximo must generate it through <code>revise()</code> so that the revision number, status transitions, copied child records, and revision history remain consistent.</p>
+<p>A normal maximex insert uses <code>MboSet.add()</code>. That is correct for ordinary new records and for an initial revision, but it is not sufficient when the intended operation is “create the next revision”. Creating such a row with <code>add()</code> can produce a record that looks valid while bypassing Maximo’s revision logic and corrupting the revision chain.</p>
+<p>Use the optional Excel control column <code>$SCRIPT.CREATE.MBO</code> to replace only the Mbo creation step with an Automation Script.</p>
+<h2 id="behavior-of-scriptcreatembo">Behavior of <code>$SCRIPT.CREATE.MBO</code></h2>
+<table>
+<thead>
+<tr>
+<th>Excel value</th>
+<th>Import behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Column missing or cell empty</td>
+<td>maximex creates the main object with the normal <code>targetobjset.add()</code> path.</td>
+</tr>
+<tr>
+<td>Script name present</td>
+<td>maximex executes the named Automation Script. The script must create the new Mbo and assign it to <code>result</code>. There is no fallback to <code>add()</code> if the script fails.</td>
+</tr>
+</tbody>
+</table>
+<p>After the script returns, maximex continues with the normal import: it applies the remaining Excel values, processes child or specification data when applicable, and saves the supplied target MboSet.</p>
+<p>The Automation Script must meet these requirements:</p>
+<ul>
+<li>Create an active Jython <strong>library script without a launch point</strong>.</li>
+<li>Leave the Automation Script <strong>Variables</strong> table empty; maximex supplies the runtime bindings directly.</li>
+<li>Create the new Mbo in the supplied <code>targetobjset</code>.</li>
+<li>Assign the new, unsaved Mbo to the single supported output variable <code>result</code>.</li>
+<li>Do not use <code>mbo</code>, <code>createdMbo</code>, <code>launchPoint</code>, or <code>scriptName</code> as custom output bindings.</li>
+<li>Do not call <code>save()</code> in the script. The import worker owns the save operation.</li>
+</ul>
+<h2 id="minimal-example-importing-a-job-plan-revision">Minimal example: importing a Job Plan revision</h2>
+<p>The following example imports revision <code>4</code> of Job Plan <code>JP-DEMO-100</code>. An earlier active revision must already exist in Maximo, and revision <code>4</code> must not yet exist.</p>
+<p>The template was generated for the <strong>Job Plans</strong> application. The technical column <code>$SCRIPT.CREATE.MBO</code> was then added manually to the second header row, and the Automation Script name was entered in the import row.</p>
+<p><img alt="Minimal Job Plan revision import" src="../img/job-plan-revision-import.png" /></p>
+<p>The relevant technical columns and values are:</p>
+<table>
+<thead>
+<tr>
+<th><code>JPNUM</code></th>
+<th><code>ORGID</code></th>
+<th><code>SITEID</code></th>
+<th><code>STATUS</code></th>
+<th style="text-align: right;"><code>PLUSCREVNUM</code></th>
+<th><code>DESCRIPTION</code></th>
+<th><code>$SCRIPT.CREATE.MBO</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JP-DEMO-100</code></td>
+<td><code>EAGLENA</code></td>
+<td><code>BEDFORD</code></td>
+<td><code>ACTIVE</code></td>
+<td style="text-align: right;"><code>4</code></td>
+<td><code>Demo job plan revision</code></td>
+<td><code>EAM_CREATE_JOBPLAN_REVISION</code></td>
+</tr>
+</tbody>
+</table>
+<p>The second worksheet row contains the technical attribute names used by maximex. The label in the first row is only descriptive; the control header in row 2 must be exactly <code>$SCRIPT.CREATE.MBO</code>.</p>
+<p><code>PLUSCREVNUM</code> contains the requested <strong>target</strong> revision. The script does not set this key directly. Maximo generates it through <code>revise()</code>, and maximex keeps and checks the generated key instead of overwriting it with the Excel value.</p>
+<p><code>STATUS=ACTIVE</code> is applied after the other editable values because the script enables deferred status processing. This lets Maximo first create and populate the pending revision and only then activate it.</p>
+<h2 id="minimal-automation-script">Minimal Automation Script</h2>
+<p>Create an active Jython Automation Script named <code>EAM_CREATE_JOBPLAN_REVISION</code>, without a launch point and without configured script variables.</p>
+<p>The following script is intentionally a minimal working example. It omits validation and error handling so that the creation contract remains easy to see.</p>
+<pre><code class="language-python"># EAM_CREATE_JOBPLAN_REVISION
+# Library script: no launch point and no configured variables.
+#
+# A production script should also validate the Excel values, ensure that the
+# target revision does not already exist, select exactly one revisable source,
+# call canRevise(), and provide useful createMboStage/createMboDiagnostic data.
+# For EXTENDED imports whose revision API copies child records, also set
+# copiedChildrenExpected = True.
+
+# revise() generates the Job Plan keys. Do not overwrite them from Excel.
+preserveGeneratedKeys = True
+
+# Apply the requested STATUS only after the remaining import values.
+deferStatus = True
+
+# Find the active source revision in the same MboSet that maximex will save.
+targetobjset.resetQbe()
+targetobjset.setQbeExactMatch(True)
+targetobjset.setQbe(&quot;JPNUM&quot;, excelValues.get(&quot;JPNUM&quot;))
+targetobjset.setQbe(&quot;ORGID&quot;, excelValues.get(&quot;ORGID&quot;))
+targetobjset.setQbe(&quot;SITEID&quot;, excelValues.get(&quot;SITEID&quot;))
+targetobjset.setQbe(&quot;STATUS&quot;, &quot;ACTIVE&quot;)
+targetobjset.reset()
+
+source = targetobjset.moveFirst()
+
+# Remove the source query before revise() adds the new revision to this set.
+targetobjset.resetQbe()
+
+revision_description = excelValues.get(&quot;$REVISIONDESCRIPTION&quot;) or &quot;&quot;
+result = source.revise(revision_description)
+</code></pre>
+<p>The important line is:</p>
+<pre><code class="language-python">result = source.revise(revision_description)
+</code></pre>
+<p><code>result</code> is the only supported output variable. It must contain the new, unsaved Mbo returned by the Maximo business method.</p>
+<h2 id="execution-flow">Execution flow</h2>
+<p>For the sample row, maximex performs these steps:</p>
+<ol>
+<li>It searches for <code>JP-DEMO-100</code>, site <code>BEDFORD</code>, organization <code>EAGLENA</code>, revision <code>4</code>.</li>
+<li>Because revision <code>4</code> does not exist, the row enters the creation path.</li>
+<li><code>$SCRIPT.CREATE.MBO</code> invokes <code>EAM_CREATE_JOBPLAN_REVISION</code> instead of calling <code>add()</code>.</li>
+<li>The script loads the active source Job Plan and calls <code>revise()</code>.</li>
+<li>The new revision is returned in <code>result</code>.</li>
+<li>maximex applies <code>DESCRIPTION</code> and any other Excel values.</li>
+<li>Because <code>deferStatus=True</code>, maximex applies <code>STATUS=ACTIVE</code> last.</li>
+<li>maximex saves the target MboSet.</li>
+</ol>
+<p>This preserves Maximo’s normal revision behavior and avoids creating an independent record that merely has a revision number assigned to it.</p>
+<h2 id="optional-revision-description">Optional revision description</h2>
+<p>The minimal spreadsheet does not require a revision description. To pass one to the example script, add another technical column:</p>
+<pre><code class="language-text">$REVISIONDESCRIPTION
+</code></pre>
+<p>The script already reads this value and passes an empty string to <code>revise()</code> when the column is absent or empty.</p>
+<h2 id="when-scriptcreatemboforce-is-needed">When <code>$SCRIPT.CREATE.MBO.FORCE</code> is needed</h2>
+<p>For Job Plans, force mode is normally unnecessary because the requested target revision in <code>PLUSCREVNUM</code> is part of the lookup and does not exist yet.</p>
+<p>Other revision or factory models may use keys that identify the existing source object instead of the future target. In that case, add <code>$SCRIPT.CREATE.MBO.FORCE</code> and set it to <code>true</code> so the worker skips the normal target lookup and executes the creation script deliberately.</p>
+<p>Do not combine force mode with a populated target unique ID, <code>$UPDATEONLY=true</code>, or <code>$DELETE=true</code>.</p>
+<h2 id="initial-revisions-and-ordinary-objects">Initial revisions and ordinary objects</h2>
+<p>The hook is optional:</p>
+<ul>
+<li>For an ordinary new Mbo, leave <code>$SCRIPT.CREATE.MBO</code> empty and use the normal insert path.</li>
+<li>For Job Plan revision <code>0</code>, leave <code>$SCRIPT.CREATE.MBO</code> empty when the initial record can be created normally.</li>
+<li>Use a creation script only when Maximo requires a business method such as <code>revise()</code>, <code>duplicate()</code>, or another object-specific factory operation.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 - SPIE RODIAS GmbH
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
