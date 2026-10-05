@@ -1,0 +1,31 @@
+Update file control-registry.xml
+
+Find the control-descriptor for the resultsetportlet
+1. change the instance-class attribute
+
+	<control-descriptor name="resultsetportlet" descriptor-class="psdi.webclient.system.runtime.DatasrcDescriptor" instance-class="de.eam.webclient.components.EAMResultSetPortlet">
+
+
+
+2. Search for the existing download functionality and insert the two new rows IN FRONT of the existing download feature.
+
+					<label id="lb4a" cssclass="tht rsdwnld" image="tablebtn_eamdl.gif" imagefalse="tablebtn_eamdl_off.gif" mxevent="eamdownload" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownloadcsv" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle"/>
+					<image id="img4a" src="tablebtn_divider.gif" hidewhen="@{download}==false" ariahidden="true"/>
+
+					<label id="lb4" cssclass="tht rsdwnld" image="tablebtn_download.gif" imagefalse="tablebtn_download_off.gif" mxevent="downloadcsv" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownloadcsv" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle"/>
+					<image id="img4" src="btn_openInApp.gif" mxevent="gotoportletapp" msggroup="startcntr" msgkey="openrs" ariahidden="true"/>
+
+					
+					
+3. change the insance-class for the table
+
+	<control-descriptor name="table" descriptor-class="psdi.webclient.system.runtime.DatasrcDescriptor" instance-class="de.eam.webclient.components.EAMTable">
+	
+4. Search for the existing download fuctionality (label and image) and add the EAM table download label and image afterwards.
+
+								<label id="lb4" cssclass="tht" image="tablebtn_download.gif" imagefalse="tablebtn_download_off.gif" mxevent="download" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle"/>
+								<image id="img9" src="tablebtn_divider.gif" hidewhen="@{download}==false" ariahidden="true"/>
+
+								<label id="${name}_table_eamdl_label" cssclass="tht" image="tablebtn_eamdl.gif" imagefalse="tablebtn_eamdl_off.gif" mxevent="eamdownload" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" />
+								<image id="img10" src="tablebtn_divider.gif" hidewhen="@{download}==false" ariahidden="true"/>
+								
